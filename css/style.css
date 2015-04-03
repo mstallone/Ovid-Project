@@ -933,12 +933,22 @@
 			background: #fff;
 		}
 
+        .main.style11 {
+            background: #fff;
+            /* border-bottom: 5px solid black;*/
+            /* border-top: 5px solid black;*/
+        }
+
 		.main.style2 {
-			background-color: #333;
-			color: rgba(255, 255, 255, 0.75);
-			background-attachment: fixed,							fixed;
-			background-image: url("images/overlay1.png"), url("../images/header.jpg");
+			background-color: #7F6150;
+            color: rgba(255, 255, 255, 0.75);
+            background-attachment: fixed,							fixed,							fixed;
+		    background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #A68064  5%, #A68064  30%, #7F6150);
+		    background-position: top left,						center center,					center center;
+		    background-size: auto,							cover,							cover;
 			background-size: auto,							cover;
+            
+            
 		}
 
 			.main.style2 a {
