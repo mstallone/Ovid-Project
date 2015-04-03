@@ -237,12 +237,12 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
                         </header>
                         <i id="artisticanalysisClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
 					</div>
-                    <p>Coming in your town soon!</p>
+                    <p>Coming to your town soon!</p>
                     <header class="major" style="width: 10%; margin: 0 auto;"></header>
 				</div>
 			</section>
 		<!-- Four -->
-			<section style="padding-top:4em; border-top: 1px solid white" id="four" class="main style2 special" >
+			<section style="padding-top:4em; border-top: 1px solid white" id="quizStarterQuestion" class="main style2 special" >
 				<div class="container">
 					<header class="major">
 						<h2>Feel like a Pro?</h2>
@@ -263,7 +263,96 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
                         </header>
                         <i id="quizClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
 					</div>
-                    <p>TBD</p>
+                    <div class="row 150%">
+						<div class="6u 12u$(medium)">
+                            1.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            3.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            5.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            6.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            9.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            11.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                        </div>
+                        <div class="6u 12u$(medium)">
+                            2.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            4.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            6.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            8.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            10.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                            12.
+                            <ol style="list-style-type: lower-latin; padding-left: 3em">
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                                <li>f</li>
+                            </ol>
+                        </div>
+                    </div>
 				</div>
 			</section>
         
@@ -300,7 +389,7 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
 			</section>
         
             <section class="main style11" id="spacer" style="padding-bottom:0.5em; padding-top: 2em;">
-                <p style="position: relative; width: 50%; margin: 0 auto; top: 50%; text-align: center;">Built and coded by Matthew Stallone. All code can be found at: <a href="http://www.github.com/mstallone/Ovid-Project">github.com/mstallone/Ovid-Project</a></p>
+                <p style="position: relative; width: 50%; margin: 0 auto; top: 50%; text-align: center;">Thoughtfully built and coded by Matthew Stallone. All code can be found at: <a href="http://www.github.com/mstallone/Ovid-Project">github.com/mstallone/Ovid-Project</a></p>
                 
 			</section>
         
@@ -323,6 +412,10 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
             });
             $("#quizClose").click(function() {
                 $("#quiz").slideUp();
+                
+                $('html, body').animate({
+                    scrollTop: $("#quizStarterQuestion").offset().top
+                }, 1000);
             });
             
             $("#latintextButton").click(function() {
@@ -380,6 +473,10 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
                 $("#latintextButton").removeClass("special");
                 $("#latintextButton").addClass("scrolly");
                 
+                $('html, body').animate({
+                    scrollTop: $("#three").offset().top
+                }, 1500);
+                
             });
             $("#artisticanalysisClose").click(function() {
                 a = true;
@@ -387,12 +484,20 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
                 $("#artisticanalysisButton").removeClass("special");
                 $("#artisticanalysisButton").addClass("scrolly");
                 
+                $('html, body').animate({
+                    scrollTop: $("#three").offset().top
+                }, 1500);
+                
             });
             $("#rhetoricalanalysisClose").click(function() {
                 r = true;
                 $("#rhetoricalanalysis").slideUp();
                 $("#rhetoricalanalysisButton").removeClass("special");
                 $("#rhetoricalanalysisButton").addClass("scrolly");
+                
+                $('html, body').animate({
+                    scrollTop: $("#three").offset().top
+                }, 1500);
                 
             });
             
