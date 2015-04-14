@@ -10,67 +10,29 @@
 		<script src="js/jquery.scrolly.min.js"></script>
 		<script src="js/skel.min.js"></script>
         <script>
-        (function($) {
-
-	skel.init({
-		reset: 'full',
-		breakpoints: {
-			global: { href: 'css/style.css', containers: '60em', grid: { gutters: ['2em', 0] } },
-			xlarge: { media: '(max-width: 1680px)', href: 'css/style-xlarge.css' },
-			large: { media: '(max-width: 1140px)', href: 'css/style-large.css', containers: '90%', grid: { gutters: ['1.5em', 0] } },
-			medium: { media: '(max-width: 980px)', href: 'css/style-medium.css', containers: '100%!' },
-			small: { media: '(max-width: 736px)', href: 'css/style-small.css', viewport: { scalable: false } },
-			xsmall: { media: '(max-width: 480px)', href: 'css/style-xsmall.css' },
-			xxsmall: { media: '(max-width: 320px)', href: 'css/style-xxsmall.css' }
-		}
-	});
-
-	$(function() {
-
-		var	$window = $(window),
-			$body = $('body');
-
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
-
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 250);
-			});
-
-		// Forms.
-			var $form = $('form');
-
-			if ($form.length > 0) {
-
-				// Hack: Placeholder fix (IE<10).
-					if (skel.vars.IEVersion < 10) {
-						$.fn.n33_formerize=function(){var _fakes=new Array(),_form = $(this);_form.find('input[type=text],textarea').each(function() { var e = $(this); if (e.val() == '' || e.val() == e.attr('placeholder')) { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).blur(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).focus(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); _form.find('input[type=password]').each(function() { var e = $(this); var x = $($('<div>').append(e.clone()).remove().html().replace(/type="password"/i, 'type="text"').replace(/type=password/i, 'type=text')); if (e.attr('id') != '') x.attr('id', e.attr('id') + '_fakeformerizefield'); if (e.attr('name') != '') x.attr('name', e.attr('name') + '_fakeformerizefield'); x.addClass('formerize-placeholder').val(x.attr('placeholder')).insertAfter(e); if (e.val() == '') e.hide(); else x.hide(); e.blur(function(event) { event.preventDefault(); var e = $(this); var x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } }); x.focus(function(event) { event.preventDefault(); var x = $(this); var e = x.parent().find('input[name=' + x.attr('name').replace('_fakeformerizefield', '') + ']'); x.hide(); e.show().focus(); }); x.keypress(function(event) { event.preventDefault(); x.val(''); }); });  _form.submit(function() { $(this).find('input[type=text],input[type=password],textarea').each(function(event) { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) e.attr('name', ''); if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); }).bind("reset", function(event) { event.preventDefault(); $(this).find('select').val($('option:first').val()); $(this).find('input,textarea').each(function() { var e = $(this); var x; e.removeClass('formerize-placeholder'); switch (this.type) { case 'submit': case 'reset': break; case 'password': e.val(e.attr('defaultValue')); x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } else { e.show(); x.hide(); } break; case 'checkbox': case 'radio': e.attr('checked', e.attr('defaultValue')); break; case 'text': case 'textarea': e.val(e.attr('defaultValue')); if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } break; default: e.val(e.attr('defaultValue')); break; } }); window.setTimeout(function() { for (x in _fakes) _fakes[x].trigger('formerize_sync'); }, 10); }); return _form; };
-						$form.n33_formerize();
-					}
-
-			}
-
-		// Scrolly.
-			$('.scrolly').scrolly();
-
-	});
-
-})(jQuery);
+            (function($) {
+                //Initiation 
+                skel.init({ reset: 'full', breakpoints: { global: { href: 'css/style.css', containers: '60em', grid: { gutters: ['2em', 0] } }, xlarge: { media: '(max-width: 1680px)', href: 'css/style-xlarge.css' }, large: { media: '(max-width: 1140px)', href: 'css/style-large.css', containers: '90%', grid: { gutters: ['1.5em', 0] } }, medium: { media: '(max-width: 980px)', href: 'css/style-medium.css', containers: '100%!' }, small: { media: '(max-width: 736px)', href: 'css/style-small.css', viewport: { scalable: false } }, xsmall: { media: '(max-width: 480px)', href: 'css/style-xsmall.css' }, xxsmall: { media: '(max-width: 320px)', href: 'css/style-xxsmall.css' } } });
+                
+                $(function() {
+                    var	$window = $(window), $body = $('body');
+                    
+                    // Disable animations/transitions until the page has loaded.
+                    $body.addClass('is-loading');
+                    $window.on('load', function() { window.setTimeout(function() { $body.removeClass('is-loading'); }, 250); });
+                    
+                    // Forms.
+                    var $form = $('form'); if ($form.length > 0) { if (skel.vars.IEVersion < 10) { $.fn.n33_formerize=function(){var _fakes=new Array(),_form = $(this);_form.find('input[type=text],textarea').each(function() { var e = $(this); if (e.val() == '' || e.val() == e.attr('placeholder')) { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).blur(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).focus(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); _form.find('input[type=password]').each(function() { var e = $(this); var x = $($('<div>').append(e.clone()).remove().html().replace(/type="password"/i, 'type="text"').replace(/type=password/i, 'type=text')); if (e.attr('id') != '') x.attr('id', e.attr('id') + '_fakeformerizefield'); if (e.attr('name') != '') x.attr('name', e.attr('name') + '_fakeformerizefield'); x.addClass('formerize-placeholder').val(x.attr('placeholder')).insertAfter(e); if (e.val() == '') e.hide(); else x.hide(); e.blur(function(event) { event.preventDefault(); var e = $(this); var x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } }); x.focus(function(event) { event.preventDefault(); var x = $(this); var e = x.parent().find('input[name=' + x.attr('name').replace('_fakeformerizefield', '') + ']'); x.hide(); e.show().focus(); }); x.keypress(function(event) { event.preventDefault(); x.val(''); }); });  _form.submit(function() { $(this).find('input[type=text],input[type=password],textarea').each(function(event) { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) e.attr('name', ''); if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); }).bind("reset", function(event) { event.preventDefault(); $(this).find('select').val($('option:first').val()); $(this).find('input,textarea').each(function() { var e = $(this); var x; e.removeClass('formerize-placeholder'); switch (this.type) { case 'submit': case 'reset': break; case 'password': e.val(e.attr('defaultValue')); x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } else { e.show(); x.hide(); } break; case 'checkbox': case 'radio': e.attr('checked', e.attr('defaultValue')); break; case 'text': case 'textarea': e.val(e.attr('defaultValue')); if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } break; default: e.val(e.attr('defaultValue')); break; } }); window.setTimeout(function() { for (x in _fakes) _fakes[x].trigger('formerize_sync'); }, 10); }); return _form; }; $form.n33_formerize(); } }
+                    
+                    // Scrolly.
+                    $('.scrolly').scrolly();
+                });
+            })(jQuery);
         </script>
         <style>
-            .quizOption:hover{
-                background-color: azure;   
-            }
-            
-            .quizCorrect {
-                background-color: rgba(0,255,0,0.25);
-            }
-            
-            .quizIncorrect {
-                background-color: rgba(255,0,0,0.25);
-            }
+            .quizOption:hover{ background-color: azure; }
+            .quizCorrect { background-color: rgba(0,255,0,0.25); }
+            .quizIncorrect { background-color: rgba(255,0,0,0.25); }
         </style>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -81,864 +43,528 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
-
 		<!-- Header -->
-			<section id="header">
-				<div class="inner">
-					<!-- <span class="icon major fa-cloud"></span> -->
-                    <h1>The Story of <strong>The Creation of the Myrmidon People</strong> in Ovid's <em>Metamorphoses</em></h1>   
-                    <p><strong>Book VII, lines 614-651</strong></p>
-					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Learn About</a></li>
-					</ul>
-				</div>
-			</section>
+        <section id="header">
+            <div class="inner">
+                <!-- <span class="icon major fa-cloud"></span> -->
+                <h1>The Story of <strong>The Creation of the Myrmidon People</strong> in Ovid's <em>Metamorphoses</em></h1>   
+                <p><strong>Book VII, lines 614-651</strong></p>
+                <ul class="actions">
+                    <li><a href="#one" class="button scrolly">Learn About</a></li>
+                </ul>
+            </div>
+        </section>
 
 		<!-- CONTEXT -->
-			<section id="one" class="main style1">
-				<div class="container">
-					<div class="row 150%">
-						<div class="6u 12u$(medium)">
-							<header class="major">
-								<h2>What is this story about (Context)</h2>
-							</header>
-							<p style="text-indent: 2.5em; margin-bottom: 0em;">
-In Liber VII of the <em>Metamorphoses</em>, Ovid retells the fable of the creation of the Myrmidon people. This section in the <em>Metamorphoses</em> follows the King of Crete, Minos, who is seeking revenge for the death of his son, Androgeus. Androgeus was murdered in Athens, and, for that, Minos is searching for allies to wage a war against Athens.
-                            </p>
-                            <p style="text-indent: 2.5em; margin-bottom: 0em;">
-Ovid, while recounting the story of Minos’s pursuit for allies, also recounts the story of a great plague decimating the population of Aegina. The Prince of Aegina, Aeacus, survives this plague. Distressed by the loss of his people, Aeacus seeks his said-to-be father, Jupiter, for help. As Aeacus observes a tree, sacred to Jupiter, covered with many ants, he demands Jupiter to give him the same number of citizens as the number of ants on the tree. As Aeacus dozes off, he sees the tree shake off the ants vigorously. He observes the ants, now on the ground, turn into humans––the Myrmidons.
-                            </p>
-                            <p style="text-indent: 2.5em; margin-bottom: 0em;">
-The tale then returns to Minos. After much defeat in securing allies, Minos turns toward Aegina for help. Not only is Minos turned down by Aeacus, but by the time that Minos arrives in Aegina, so does Cephalus, the ambassador of Athens. Aeacus recounts to both Minos and Cephalus the tragic plague that hit the people of Aegina, as well as the godly repopulation that he witnessed.      
-                            </p>
-                            <p style="text-indent: 2.5em; margin-bottom: 0em;">
-This website will specifically look at the scene in which Aeacus demands citizens from his father as well as the transformation of the ants into the Myrmidons.                               
-                            </p>
-						</div>
-						<div class="6u$ 12u$(medium) important(medium)">
-							<span class="image fit" style="margin-top:7em; margin-bottom: 0em"><img src="images/pic01.jpg" alt="" /></span>
-                            <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 0.8em; line-height: 1.4em">"When Aegina Is Depopulated by a Plague King Aescus Asks Zeus to Turn the Ants into People."</div>
-						</div>
-					</div>
-				</div>
-			</section>
-        
-            <!-- LEARN MORE-->
-			<section id="three" class="main style2 special">
-				<div class="container">
-					<header class="major">
-						<h2>Learn more</h2>
-					</header>
-                    <p><em>"aspiciō nōscōque: adeunt rēgemque salūtant"</em></p>
-					<div class="row 150%">
-						<div class="6u 12u$(medium)">
-							<span class="image fit" style="margin-bottom: 0em"><img src="images/pic03.jpg" alt="" /></span>
-                            <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 0.8em; line-height: 1.4em; padding-bottom:2em">"Solis, Virgil. Myrmidons; People from Ants for King Aeacus."</div>
-							<h3>Latin Text</h3>
-							<p>Take a look at the literal translation of the metamorphosis of the ants into people, as well as see notes and vocabulary and the original latin text with macrons.</p>
-							<ul class="actions">
-								<li><a href="#latintext" id="latintextButton" class="button scrolly">More</a></li>
-							</ul>
-						</div>
-						<div class="6u 12u$(medium)">
-							<span class="image fit" style="margin-bottom: 0em"><img src="images/pic02.jpg" alt="" /></span>
-                            <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 0.8em; line-height: 1.4em; padding-bottom:2em">"Zeus Turns Ants into Men to Help Aeacus."</div>
-							<h3>Rhetorical Analysis</h3>
-							<p>A look at the way that Ovid depicts the main character, Aeacus, and the temperatement with which Aeacus talks to the gods. Aeacus's actions diverge from the Roman societal norm.</p>
-							<ul class="actions">
-								<li><a href="#rhetoricalanalysis" id="rhetoricalanalysisButton" class="button scrolly">More</a></li>
-							</ul>
-						</div>
-                        <!--
-						<div class="4u$ 12u$(medium)">
-							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-							<h3>Artistic Analysis</h3>
-							<p>See the contrast in the art that is depicting the fable as a whole with art that way created specifically for Ovid's Metamorphoses. Also, we will look into the way that the art has changed throughout time, from the Romans to Renaissance to the Modern age.</p>
-							<ul class="actions">
-								<li><a href="#artisticanalysis" id="artisticanalysisButton" class="button scrolly">More</a></li>
-							</ul>
-						</div>-->
-					</div>
-				</div>
-			</section>
-
-        
-            <section id="latintext" class="main style1">
-				<div class="container">
-					<div class="row 150%">
+        <section id="one" class="main style1">
+            <div class="container">
+                <div class="row 150%">
+                    <div class="6u 12u$(medium)">
                         <header class="major">
-                            <h2>Latin Text</h2>
+                            <h2>What is this story about (Context)</h2>
                         </header>
-                        <i id="latintextClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
-					</div>
-                    <section class="special">
-                        <ul class="actions uniform">
-                            <li><a id="b1" class="button special">Original Text</a></li>
-                            <li><a id="b3" class="button">Translation</a></li>
-                            <li><a id="b2" class="button">Notes and Vocab</a></li>
-                        </ul>
-                    </section>
-                    <div id="b1d" style="width: 50%; margin: 0 auto;">
-                        <ol type="1" start="614">
-                            <li>Attonitus tantō miserarum turbine rērum,</li>
-                            <li>"Iuppiter ō!" dīxī, "sī tē nōn falsa loquuntur</li>
-                            <li>dicta sub amplexus Aegīnae Āsōpidōs isse,</li>
-                            <li>nec tē, māgne pater, nostrī pudet esse parentem,</li>
-                            <li>aut mihi redde meōs aut mē quoque conde sepulcrō!"</li>
-                            <li>ille notam fulgōre dedit tonitrūque secundō.</li>
-                            <li>"accipiō sintque ista precor felicia mentis</li>
-                            <li>sīgna tuae!" dīxī, "quod dīs mihi, pīgneror ōmen."</li>
-                            <li>forte fuit iūxtā patulis rārissima rāmīs</li>
-                            <li>sacra Iovī quercus dē sēmine Dōdōnaeō;</li>
-                            <li>hīc nōs frūgilegās aspēximus āgmine longō</li>
-                            <li>grande onus exiguō formīcās ōre gerentēs</li>
-                            <li>rūgōsōque suum servāntēs cortice callem;</li>
-                            <li>dum numerum mīror, "totidem, pater optime," dīxī,</li>
-                            <li>"tū mihi dā cīvēs et inānia moenia supple!"</li>
-                            <li>intremuit rāmīsque sonum sine flāmine mōtīs</li>
-                            <li>alta dedit quercus: pavidō mihi membra timōre</li>
-                            <li>horruerant, stābantque comae; tamen ōscula terrae</li>
-                            <li>rōboribusque dedī, nec mē spērāre fatēbar;</li>
-                            <li>spērābam tamen atque animō mea vōta fovēbam.</li>
-                            <li>nox subit, et cūrīs exercita corpora somnus</li>
-                            <li>occupat: ante oculōs eadem mihi quercus adesse</li>
-                            <li>et rāmōs totidem totidemque animālia rāmīs</li>
-                            <li>ferre suīs visa est pariterque tremēscere mōtū</li>
-                            <li>grāniferumque āgmen subiēctīs spargere in arvīs;</li>
-                            <li>crēscere dēsubitō et māius māiusque vidērī</li>
-                            <li>ac sē tollere humō rēctōque adsistere truncō</li>
-                            <li>et maciem numerumque pedum nigrumque colōrem</li>
-                            <li>pōnere et hūmānam membrīs indūcere fōrmam.</li>
-                            <li>somnus abit: damnō vigilāns mea visa querorque</li>
-                            <li>in superīs opis esse nihil; at in aedibus ingēns</li>
-                            <li>murmur erat, vocēsque hominum exaudīre videbar</li>
-                            <li>iam mihi dēsuētās; dum suspicor hās quoque somnī</li>
-                            <li>esse, venit Telamon properus foribusque reclūsīs</li>
-                            <li>"spēque fidēque, pater", dīxīt "māiora vidēbis:</li>
-                            <li>ēgredere!" ēgredior, quālēsque in imāgine somnī</li>
-                            <li>vīsus eram vidisse viros, ex ōrdine tālēs</li>
-                            <li>aspiciō nōscōque: adeunt rēgemque salūtant.</li>
-                        </ol>
-                    </div>
-                    <div id="b2d" style="display:none; width: 50%; margin: 0 auto; text-align: center;">
-                        <p>
-                        To be add with final translation.
+                        <p style="text-indent: 2.5em; margin-bottom: 0em;">
+In Liber VII of the <em>Metamorphoses</em>, Ovid retells the fable of the creation of the Myrmidon people. This section in the <em>Metamorphoses</em> follows the King of Crete, Minos, who is seeking revenge for the death of his son, Androgeus. Androgeus was murdered in Athens, and, for that, Minos is searching for allies to wage a war against Athens.
+                        </p>
+                        <p style="text-indent: 2.5em; margin-bottom: 0em;">
+Ovid, while recounting the story of Minos’s pursuit for allies, also recounts the story of a great plague decimating the population of Aegina. The Prince of Aegina, Aeacus, survives this plague. Distressed by the loss of his people, Aeacus seeks his said-to-be father, Jupiter, for help. As Aeacus observes a tree, sacred to Jupiter, covered with many ants, he demands Jupiter to give him the same number of citizens as the number of ants on the tree. As Aeacus dozes off, he sees the tree shake off the ants vigorously. He observes the ants, now on the ground, turn into humans––the Myrmidons.
+                        </p>
+                        <p style="text-indent: 2.5em; margin-bottom: 0em;">
+The tale then returns to Minos. After much defeat in securing allies, Minos turns toward Aegina for help. Not only is Minos turned down by Aeacus, but by the time that Minos arrives in Aegina, so does Cephalus, the ambassador of Athens. Aeacus recounts to both Minos and Cephalus the tragic plague that hit the people of Aegina, as well as the godly repopulation that he witnessed.      
+                        </p>
+                        <p style="text-indent: 2.5em; margin-bottom: 0em;">
+This website will specifically look at the scene in which Aeacus demands citizens from his father as well as the transformation of the ants into the Myrmidons.                               
                         </p>
                     </div>
-                    <div id="b3d" style="display:none; width: 50%; margin: 0 auto;">
-                        <ol type="1" start="614">
-                            <li>Stunned by the great twist of miserable events,</li>
-                            <li>I said, “O Jupiter, if not false words say that</li>
-                            <li>you came under the Asopidian embraces of Aegina</li>
-                            <li>and if it does not shame you to be the father of us, great father,</li>
-                            <li>then either return my people to me or hide me also by means of a grave.”</li>
-                            <li>He gave a sign with a flash of lightning and with followed thunder,</li>
-                            <li>“I accept and I beg the such omen may be a sign of your</li>
-                            <li>understanding,” I said, “in what you give to me, I pledge the omen.”</li>
-                            <li>By chance nearby there was the thinnest oak-tree with spread out branches</li>
-                            <li>sacred to Jupiter, from the seed of Dodona;</li>
-                            <li>here we observed grain-bearing ants in a long line</li>
-                            <li>carrying a great load in [their] small mouths</li>
-                            <li>and keeping their own trails in the wrinkled bark;</li>
-                            <li>while admiring the numbers, I said, “best father, you</li>
-                            <li>give to me the same number of citizens and you fill the empty city walls!”</li>
-                            <li>The nourished oak-tree trembled and gave a sound with the having been shaken branches</li>
-                            <li>without a breeze: [my] limbs trembled by means of the shaking fear to me</li>
-                            <li>and [my] hair was erect; however I gave kisses to the ground</li>
-                            <li>and to the oak-tree, nor was I confessing that I hoped;</li>
-                            <li>however, I was hoping and moreover I was favoring my wishes in [my] mind.</li>
-                            <li>Night came, and sleep occupied [my] having been worked body by means of anxiety.</li>
-                            <li>Before my own eyes, it seemed that the same oak-tree existed</li>
-                            <li>and with the same number of branches and that it carried the same number of animals</li>
-                            <li>on its own branches, and it trembled with the same motion</li>
-                            <li>and it scattered the grain-bearing troops in the having been cast below fields;</li>
-                            <li>And suddenly it seems to rise bigger and bigger</li>
-                            <li>and to rise up from the ground and to stand up with straighten torso</li>
-                            <li>and to put away the thinness and the number of feet and their black color</li>
-                            <li>to lead in human form by means of limbs</li>
-                            <li>Sleep goes away: wakeful I reject my vision and complain</li>
-                            <li>that nothing in the gods of help; but there was a great murmur</li>
-                            <li>in the palace, and I seemed to hear clearly the voice of men</li>
-                            <li>now unaccustomed to me; while I suspect that these were the voices of sleep,</li>
-                            <li>Prosperous Telamon came with the door having been opened</li>
-                            <li>and said, “father, you will see things greater than both hope and faith.</li>
-                            <li>go out!” I go out, what sort of men I had seemed to have seen</li>
-                            <li>in the image of sleep, I see such a sort of men in order</li>
-                            <li>and I recognize them: they approach and they salute the king.</li>
+                    <div class="6u$ 12u$(medium) important(medium)">
+                        <span class="image fit" style="margin-top:7em; margin-bottom: 0em"><img src="images/pic01.jpg" alt="" /></span>
+                        <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 0.8em; line-height: 1.4em">"When Aegina Is Depopulated by a Plague King Aescus Asks Zeus to Turn the Ants into People."</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- LEARN MORE-->
+        <section id="three" class="main style2 special">
+            <div class="container">
+                <header class="major">
+                    <h2>Learn more</h2>
+                </header>
+                <p><em>"aspiciō nōscōque: adeunt rēgemque salūtant"</em></p>
+                <div class="row 150%">
+                    <div class="6u 12u$(medium)">
+                        <span class="image fit" style="margin-bottom: 0em"><img src="images/pic03.jpg" alt="" /></span>
+                        <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 0.8em; line-height: 1.4em; padding-bottom:2em">"Solis, Virgil. Myrmidons; People from Ants for King Aeacus."</div>
+                        <h3>Latin Text</h3>
+                        <p>Take a look at the literal translation of the metamorphosis of the ants into people, as well as see notes and vocabulary and the original latin text with macrons.</p>
+                        <ul class="actions">
+                            <li><a href="#latintext" id="latintextButton" class="button scrolly">More</a></li>
+                        </ul>
+                    </div>
+                    <div class="6u 12u$(medium)">
+                        <span class="image fit" style="margin-bottom: 0em"><img src="images/pic02.jpg" alt="" /></span>
+                        <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 0.8em; line-height: 1.4em; padding-bottom:2em">"Zeus Turns Ants into Men to Help Aeacus."</div>
+                        <h3>Rhetorical Analysis</h3>
+                        <p>A look at the way that Ovid depicts the main character, Aeacus, and the temperatement with which Aeacus talks to the gods. Aeacus's actions diverge from the Roman societal norm.</p>
+                        <ul class="actions">
+                            <li><a href="#rhetoricalanalysis" id="rhetoricalanalysisButton" class="button scrolly">More</a></li>
+                        </ul>
+                    </div>
+                    <!--
+                    <div class="4u$ 12u$(medium)">
+                        <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+                        <h3>Artistic Analysis</h3>
+                        <p>See the contrast in the art that is depicting the fable as a whole with art that way created specifically for Ovid's Metamorphoses. Also, we will look into the way that the art has changed throughout time, from the Romans to Renaissance to the Modern age.</p>
+                        <ul class="actions">
+                            <li><a href="#artisticanalysis" id="artisticanalysisButton" class="button scrolly">More</a></li>
+                        </ul>
+                    </div>-->
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="latintext" class="main style1">
+            <div class="container">
+                <div class="row 150%">
+                    <header class="major">
+                        <h2>Latin Text</h2>
+                    </header>
+                    <i id="latintextClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
+                </div>
+                <section class="special">
+                    <ul class="actions uniform">
+                        <li><a id="b1" class="button special">Original Text</a></li>
+                        <li><a id="b3" class="button">Translation</a></li>
+                        <li><a id="b2" class="button">Notes and Vocab</a></li>
+                    </ul>
+                </section>
+                <div id="b1d" style="width: 50%; margin: 0 auto;">
+                    <ol type="1" start="614">
+                        <li>Attonitus tantō miserarum turbine rērum,</li>
+                        <li>"Iuppiter ō!" dīxī, "sī tē nōn falsa loquuntur</li>
+                        <li>dicta sub amplexus Aegīnae Āsōpidōs isse,</li>
+                        <li>nec tē, māgne pater, nostrī pudet esse parentem,</li>
+                        <li>aut mihi redde meōs aut mē quoque conde sepulcrō!"</li>
+                        <li>ille notam fulgōre dedit tonitrūque secundō.</li>
+                        <li>"accipiō sintque ista precor felicia mentis</li>
+                        <li>sīgna tuae!" dīxī, "quod dīs mihi, pīgneror ōmen."</li>
+                        <li>forte fuit iūxtā patulis rārissima rāmīs</li>
+                        <li>sacra Iovī quercus dē sēmine Dōdōnaeō;</li>
+                        <li>hīc nōs frūgilegās aspēximus āgmine longō</li>
+                        <li>grande onus exiguō formīcās ōre gerentēs</li>
+                        <li>rūgōsōque suum servāntēs cortice callem;</li>
+                        <li>dum numerum mīror, "totidem, pater optime," dīxī,</li>
+                        <li>"tū mihi dā cīvēs et inānia moenia supple!"</li>
+                        <li>intremuit rāmīsque sonum sine flāmine mōtīs</li>
+                        <li>alta dedit quercus: pavidō mihi membra timōre</li>
+                        <li>horruerant, stābantque comae; tamen ōscula terrae</li>
+                        <li>rōboribusque dedī, nec mē spērāre fatēbar;</li>
+                        <li>spērābam tamen atque animō mea vōta fovēbam.</li>
+                        <li>nox subit, et cūrīs exercita corpora somnus</li>
+                        <li>occupat: ante oculōs eadem mihi quercus adesse</li>
+                        <li>et rāmōs totidem totidemque animālia rāmīs</li>
+                        <li>ferre suīs visa est pariterque tremēscere mōtū</li>
+                        <li>grāniferumque āgmen subiēctīs spargere in arvīs;</li>
+                        <li>crēscere dēsubitō et māius māiusque vidērī</li>
+                        <li>ac sē tollere humō rēctōque adsistere truncō</li>
+                        <li>et maciem numerumque pedum nigrumque colōrem</li>
+                        <li>pōnere et hūmānam membrīs indūcere fōrmam.</li>
+                        <li>somnus abit: damnō vigilāns mea visa querorque</li>
+                        <li>in superīs opis esse nihil; at in aedibus ingēns</li>
+                        <li>murmur erat, vocēsque hominum exaudīre videbar</li>
+                        <li>iam mihi dēsuētās; dum suspicor hās quoque somnī</li>
+                        <li>esse, venit Telamon properus foribusque reclūsīs</li>
+                        <li>"spēque fidēque, pater", dīxīt "māiora vidēbis:</li>
+                        <li>ēgredere!" ēgredior, quālēsque in imāgine somnī</li>
+                        <li>vīsus eram vidisse viros, ex ōrdine tālēs</li>
+                        <li>aspiciō nōscōque: adeunt rēgemque salūtant.</li>
+                    </ol>
+                </div>
+                <div id="b2d" style="display:none; width: 50%; margin: 0 auto; text-align: center;">
+                    <p>
+                    To be add with final translation.
+                    </p>
+                </div>
+                <div id="b3d" style="display:none; width: 50%; margin: 0 auto;">
+                    <ol type="1" start="614">
+                        <li>Stunned by the great twist of miserable events,</li>
+                        <li>I said, “O Jupiter, if not false words say that</li>
+                        <li>you came under the Asopidian embraces of Aegina</li>
+                        <li>and if it does not shame you to be the father of us, great father,</li>
+                        <li>then either return my people to me or hide me also by means of a grave.”</li>
+                        <li>He gave a sign with a flash of lightning and with followed thunder,</li>
+                        <li>“I accept and I beg the such omen may be a sign of your</li>
+                        <li>understanding,” I said, “in what you give to me, I pledge the omen.”</li>
+                        <li>By chance nearby there was the thinnest oak-tree with spread out branches</li>
+                        <li>sacred to Jupiter, from the seed of Dodona;</li>
+                        <li>here we observed grain-bearing ants in a long line</li>
+                        <li>carrying a great load in [their] small mouths</li>
+                        <li>and keeping their own trails in the wrinkled bark;</li>
+                        <li>while admiring the numbers, I said, “best father, you</li>
+                        <li>give to me the same number of citizens and you fill the empty city walls!”</li>
+                        <li>The nourished oak-tree trembled and gave a sound with the having been shaken branches</li>
+                        <li>without a breeze: [my] limbs trembled by means of the shaking fear to me</li>
+                        <li>and [my] hair was erect; however I gave kisses to the ground</li>
+                        <li>and to the oak-tree, nor was I confessing that I hoped;</li>
+                        <li>however, I was hoping and moreover I was favoring my wishes in [my] mind.</li>
+                        <li>Night came, and sleep occupied [my] having been worked body by means of anxiety.</li>
+                        <li>Before my own eyes, it seemed that the same oak-tree existed</li>
+                        <li>and with the same number of branches and that it carried the same number of animals</li>
+                        <li>on its own branches, and it trembled with the same motion</li>
+                        <li>and it scattered the grain-bearing troops in the having been cast below fields;</li>
+                        <li>And suddenly it seems to rise bigger and bigger</li>
+                        <li>and to rise up from the ground and to stand up with straighten torso</li>
+                        <li>and to put away the thinness and the number of feet and their black color</li>
+                        <li>to lead in human form by means of limbs</li>
+                        <li>Sleep goes away: wakeful I reject my vision and complain</li>
+                        <li>that nothing in the gods of help; but there was a great murmur</li>
+                        <li>in the palace, and I seemed to hear clearly the voice of men</li>
+                        <li>now unaccustomed to me; while I suspect that these were the voices of sleep,</li>
+                        <li>Prosperous Telamon came with the door having been opened</li>
+                        <li>and said, “father, you will see things greater than both hope and faith.</li>
+                        <li>go out!” I go out, what sort of men I had seemed to have seen</li>
+                        <li>in the image of sleep, I see such a sort of men in order</li>
+                        <li>and I recognize them: they approach and they salute the king.</li>
+                    </ol>
+                </div>
+                <header class="major" style="width: 10%; margin: 0 auto;"></header>
+            </div>
+        </section>
+
+        <section id="rhetoricalanalysis" class="main style1">
+            <div class="container">
+                <div class="row 150%">
+                    <header class="major">
+                        <h2>Retorical Analysis</h2>
+                    </header>
+                    <i id="rhetoricalanalysisClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
+                </div>
+                <p style="text-indent: 2.5em; margin-bottom: 0em;">
+In Roman society, it is societal norm to talk to the gods politely and to not demand. In Roman literature, authors reflect this by using the subjunctive mood when a character talks to the gods. The mood shows politeness because the verb holds a connotation of uncertainty by the use of “may” or “might” and removes the connotation of a demand. Additionally, characters in Roman literature are often depicted as treating a single god as a plural entity. Ovid is no exception; in Ovid’s <em>Metamorphoses</em>, Liber VIII, the story of Baucis and Philemon is an example of these methods in use, specifically when either of these two main characters are speaking to the gods. For example, Baucis and Philemon, when asking the gods for a favor, use the subjunctive hortatory, and never the imperative. In Liber VII, Ovid diverges from these methods to show contrast when depicting Aeacus. Ovid depicts Aeacus in the opposite manner of Baucis and Philemon: Aeacus uses the imperative to demand what he desires from the gods and treats himself as a plural being. Aeacus, throughout the fable of the creation of the Myrmidon people, shows a lack of respect when talking to the gods.
+                </p>
+                <p style="text-indent: 2.5em; margin-bottom: 0em;">
+Aeacus’s lack of respect can specifically be seen when he is demanding his said-to-be father, Jupiter, to repopulate Aegina. In line 628, Aeacus says, “tū mihi dā”; “dā” is the 2nd person singular present imperative, which makes this line very direct and commanding: “You give to me.” Ovid specifically adds emphasis on the “you” by adding “tū,” because the second person is already inclusive to “dā.” Furthermore, Aeacus tries to instill guilt into Jupiter by saying, “nec tē, māgne pater, nostrī pudet esse parentem.” The literal translation of this line is “and if it does not shame you, great father, to be the father of us.” This, at first glance, appears to be polite because Aeacus is giving Jupiter the attribute of greatness; however, looking at the word placement and word choice, this response is rather rude. Ovid places “esse parentem” (“to be father”) last in the line, placing emphasis on that Jupiter is a bad father because of the shame Jupiter holds for being Aeacus’s father. Additionally, in this line, one can see the lack of politeness by Aeacus referring to himself in the plural with “nostrī” and Jupiter in the singular with “tē.” The verb number in this line should have been the other way around. The rudeness in Aeacus’s speech is obvious and evident throughout the entirety of the tale.            
+                </p>
+                <header class="major" style="width: 10%; margin: 0 auto;"></header>
+            </div>
+        </section>
+
+        <section id="artisticanalysis" class="main style1">
+            <div class="container">
+                <div class="row 150%">
+                    <header class="major">
+                        <h2>Artistic Analysis</h2>
+                    </header>
+                    <i id="artisticanalysisClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
+                </div>
+                <p>To be added</p>
+                <header class="major" style="width: 10%; margin: 0 auto;"></header>
+            </div>
+        </section>
+        <!-- Four -->
+        <section style="padding-top:4em; border-top: 1px solid white" id="quizStarterQuestion" class="main style2 special" >
+            <div class="container">
+                <header class="major">
+                    <h2>Feel like a Pro?</h2>
+                </header>
+                <p>Take this test to prove your knowledge!</p>
+                <ul class="actions uniform">
+                    <li><a href="#quiz" class="button special scrolly" id="quizButton">Quiz</a></li>
+                    <li><a href="#header" class="button scrolly">Top</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="quiz" class="main style1">
+            <div class="container">
+                <div class="row 150%">
+                    <header class="major">
+                        <h2>Quiz your knownledge</h2>
+                    </header>
+                    <i id="quizClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
+                </div>
+                <div class="row 150%">
+                    <div class="6u 12u$(medium)">
+                        1. What does the word "frūgilegās" in line 624 go with? 
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Nōs</li>
+                            <li class="quizOption correct">Formīcās</li>
+                            <li class="quizOption">Hīc</li>
+                            <li class="quizOption">None of the above</li>
+                        </ol>
+                        3. Which line has the most elisions?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">639</li>
+                            <li class="quizOption">642</li>
+                            <li class="quizOption correct">649</li>
+                            <li class="quizOption">651</li>
+                        </ol>
+                        5. What grammarical construction exists in lines 635-636? 
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption correct">Indirect statement</li>
+                            <li class="quizOption">Ablative absolute</li>
+                            <li class="quizOption">Subjunctive purpose clause</li>
+                            <li class="quizOption">Gerundive clause</li>
+                        </ol>
+                        7. What is the reason that "spē" and "fidē" in line 648 are in the ablative case?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Ablative of cause</li>
+                            <li class="quizOption">Ablative by means</li>
+                            <li class="quizOption">Ablative absolute</li>
+                            <li class="quizOption correct">Ablative of comparison</li>
+                        </ol>
+                        9. What is the subject of the indirect statement in lines 615-616? 
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption correct">Tē</li>
+                            <li class="quizOption">Falsa</li>
+                            <li class="quizOption">Amplexus</li>
+                            <li class="quizOption">Aegīnae </li>
+                        </ol>
+                        11. What is the case of "opis" in line 644?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Nominative</li>
+                            <li class="quizOption correct">Genitive</li>
+                            <li class="quizOption">Dative</li>
+                            <li class="quizOption">Ablative</li>
                         </ol>
                     </div>
-                    <header class="major" style="width: 10%; margin: 0 auto;"></header>
+                    <div class="6u 12u$(medium)">
+                        2. What is the correct tense and mood for the verb "salūtant" in line 651? 
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Present subjunctive</li>
+                            <li class="quizOption">Future indicative</li>
+                            <li class="quizOption correct">Present indicative</li>
+                            <li class="quizOption">Imperfect subjunctive</li>
+                        </ol>
+                        4. What poetic device exists in line 625?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Polysyndeton</li>
+                            <li class="quizOption">Tmesis</li>
+                            <li class="quizOption">Apostrophe</li>
+                            <li class="quizOption correct">Synchysis</li>
+                        </ol>
+                        6. What is the case of "optime" in line 627?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Ablative</li>
+                            <li class="quizOption correct">Vocative</li>
+                            <li class="quizOption">Dative</li>
+                            <li class="quizOption">Nominative</li>
+                        </ol>
+                        8. What does the relative pronoun "quod" in line 621 describe?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption correct">Ōmen</li>
+                            <li class="quizOption">Jupiter</li>
+                            <li class="quizOption">Aeacus</li>
+                            <li class="quizOption">Undeclared</li>
+                        </ol>
+                        10. Which line contains a midline caesura in the correct place?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">643</li>
+                            <li class="quizOption">644</li>
+                            <li class="quizOption">645</li>
+                            <li class="quizOption correct">648</li>
+                        </ol>
+                        12. What is the word "conde" in line 618?
+                        <ol style="list-style-type: lower-latin; padding-left: 3em">
+                            <li class="quizOption">Noun, ablative</li>
+                            <li class="quizOption">Noun, nominative</li>
+                            <li class="quizOption correct">Verb, imperative </li>
+                            <li class="quizOption">Perfect passive participle in the ablative case</li>
+                        </ol>
+                    </div>
+                    <div>1=B &#124; 2=C &#124; 3=C &#124; 4=D &#124; 5=A &#124; 6=B &#124; 7=D&#124; 8=A &#124; 9=A &#124; 10=D &#124; 11=B &#124; 12=C</div>
                 </div>
-			</section>
-        
-            <section id="rhetoricalanalysis" class="main style1">
-				<div class="container">
-					<div class="row 150%">
-                        <header class="major">
-                            <h2>Retorical Analysis</h2>
-                        </header>
-                        <i id="rhetoricalanalysisClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
-					</div>
-                    <p style="text-indent: 2.5em; margin-bottom: 0em;">
-In Roman society, it is societal norm to talk to the gods politely and to not demand. In Roman literature, authors reflect this by using the subjunctive mood when a character talks to the gods. The mood shows politeness because the verb holds a connotation of uncertainty by the use of “may” or “might” and removes the connotation of a demand. Additionally, characters in Roman literature are often depicted as treating a single god as a plural entity. Ovid is no exception; in Ovid’s <em>Metamorphoses</em>, Liber VIII, the story of Baucis and Philemon is an example of these methods in use, specifically when either of these two main characters are speaking to the gods. For example, Baucis and Philemon, when asking the gods for a favor, use the subjunctive hortatory, and never the imperative. In Liber VII, Ovid diverges from these methods to show contrast when depicting Aeacus. Ovid depicts Aeacus in the opposite manner of Baucis and Philemon: Aeacus uses the imperative to demand what he desires from the gods and treats himself as a plural being. Aeacus, throughout the fable of the creation of the Myrmidon people, shows a lack of respect when talking to the gods.
-                    </p>
-                    <p style="text-indent: 2.5em; margin-bottom: 0em;">
-Aeacus’s lack of respect can specifically be seen when he is demanding his said-to-be father, Jupiter, to repopulate Aegina. In line 628, Aeacus says, “tū mihi dā”; “dā” is the 2nd person singular present imperative, which makes this line very direct and commanding: “You give to me.” Ovid specifically adds emphasis on the “you” by adding “tū,” because the second person is already inclusive to “dā.” Furthermore, Aeacus tries to instill guilt into Jupiter by saying, “nec tē, māgne pater, nostrī pudet esse parentem.” The literal translation of this line is “and if it does not shame you, great father, to be the father of us.” This, at first glance, appears to be polite because Aeacus is giving Jupiter the attribute of greatness; however, looking at the word placement and word choice, this response is rather rude. Ovid places “esse parentem” (“to be father”) last in the line, placing emphasis on that Jupiter is a bad father because of the shame Jupiter holds for being Aeacus’s father. Additionally, in this line, one can see the lack of politeness by Aeacus referring to himself in the plural with “nostrī” and Jupiter in the singular with “tē.” The verb number in this line should have been the other way around. The rudeness in Aeacus’s speech is obvious and evident throughout the entirety of the tale.            
-                    </p>
-                    <header class="major" style="width: 10%; margin: 0 auto;"></header>
-				</div>
-			</section>
-        
-            <section id="artisticanalysis" class="main style1">
-				<div class="container">
-					<div class="row 150%">
-                        <header class="major">
-                            <h2>Artistic Analysis</h2>
-                        </header>
-                        <i id="artisticanalysisClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
-					</div>
-                    <p>To be added</p>
-                    <header class="major" style="width: 10%; margin: 0 auto;"></header>
-				</div>
-			</section>
-		<!-- Four -->
-			<section style="padding-top:4em; border-top: 1px solid white" id="quizStarterQuestion" class="main style2 special" >
-				<div class="container">
-					<header class="major">
-						<h2>Feel like a Pro?</h2>
-					</header>
-                    <p>Take this test to prove your knowledge!</p>
-					<ul class="actions uniform">
-						<li><a href="#quiz" class="button special scrolly" id="quizButton">Quiz</a></li>
-						<li><a href="#header" class="button scrolly">Top</a></li>
-					</ul>
-				</div>
-			</section>
-        
-            <section id="quiz" class="main style1">
-				<div class="container">
-					<div class="row 150%">
-                        <header class="major">
-                            <h2>Quiz your knownledge</h2>
-                        </header>
-                        <i id="quizClose" style="margin-top:0.25em; position: absolute; right:2.5em;" class="fa fa-times fa-2x"></i>
-					</div>
-                    <div class="row 150%">
-						<div class="6u 12u$(medium)">
-                            1. What does the word "frūgilegās" in line 624 go with? 
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Nōs</li>
-                                <li class="quizOption correct">Formīcās</li>
-                                <li class="quizOption">Hīc</li>
-                                <li class="quizOption">None of the above</li>
-                            </ol>
-                            3. Which line has the most elisions?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">639</li>
-                                <li class="quizOption">642</li>
-                                <li class="quizOption correct">649</li>
-                                <li class="quizOption">651</li>
-                            </ol>
-                            5. What grammarical construction exists in lines 635-636? 
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption correct">Indirect statement</li>
-                                <li class="quizOption">Ablative absolute</li>
-                                <li class="quizOption">Subjunctive purpose clause</li>
-                                <li class="quizOption">Gerundive clause</li>
-                            </ol>
-                            7. What is the reason that "spē" and "fidē" in line 648 are in the ablative case?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Ablative of cause</li>
-                                <li class="quizOption">Ablative by means</li>
-                                <li class="quizOption">Ablative absolute</li>
-                                <li class="quizOption correct">Ablative of comparison</li>
-                            </ol>
-                            9. What is the subject of the indirect statement in lines 615-616? 
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption correct">Tē</li>
-                                <li class="quizOption">Falsa</li>
-                                <li class="quizOption">Amplexus</li>
-                                <li class="quizOption">Aegīnae </li>
-                            </ol>
-                            11. What is the case of "opis" in line 644?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Nominative</li>
-                                <li class="quizOption correct">Genitive</li>
-                                <li class="quizOption">Dative</li>
-                                <li class="quizOption">Ablative</li>
-                            </ol>
-                        </div>
-                        <div class="6u 12u$(medium)">
-                            2. What is the correct tense and mood for the verb "salūtant" in line 651? 
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Present subjunctive</li>
-                                <li class="quizOption">Future indicative</li>
-                                <li class="quizOption correct">Present indicative</li>
-                                <li class="quizOption">Imperfect subjunctive</li>
-                            </ol>
-                            4. What poetic device exists in line 625?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Polysyndeton</li>
-                                <li class="quizOption">Tmesis</li>
-                                <li class="quizOption">Apostrophe</li>
-                                <li class="quizOption correct">Synchysis</li>
-                            </ol>
-                            6. What is the case of "optime" in line 627?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Ablative</li>
-                                <li class="quizOption correct">Vocative</li>
-                                <li class="quizOption">Dative</li>
-                                <li class="quizOption">Nominative</li>
-                            </ol>
-                            8. What does the relative pronoun "quod" in line 621 describe?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption correct">Ōmen</li>
-                                <li class="quizOption">Jupiter</li>
-                                <li class="quizOption">Aeacus</li>
-                                <li class="quizOption">Undeclared</li>
-                            </ol>
-                            10. Which line contains a midline caesura in the correct place?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">643</li>
-                                <li class="quizOption">644</li>
-                                <li class="quizOption">645</li>
-                                <li class="quizOption correct">648</li>
-                            </ol>
-                            12. What is the word "conde" in line 618?
-                            <ol style="list-style-type: lower-latin; padding-left: 3em">
-                                <li class="quizOption">Noun, ablative</li>
-                                <li class="quizOption">Noun, nominative</li>
-                                <li class="quizOption correct">Verb, imperative </li>
-                                <li class="quizOption">Perfect passive participle in the ablative case</li>
-                            </ol>
-                        </div>
-                        <div>1=B &#124; 2=C &#124; 3=C &#124; 4=D &#124; 5=A &#124; 6=B &#124; 7=D&#124; 8=A &#124; 9=A &#124; 10=D &#124; 11=B &#124; 12=C</div>
+            </div>
+        </section>
+
+        <section id="four" class="main style1 special" style="padding-bottom: 1em">
+            <div class="container">
+                <h2>Bibliography</h2>
+                <div class="row 150%">
+                    <div class="4u 12u$(medium)">
+                        <ul style="list-style-type: none; font-size: 0.86em">
+                            <li>Hornblower, Simon, and Antony Spawforth. The Oxford Classical Dictionary. Oxford: Oxford UP, 2003. Print.</li>
+                            <br>
+                            <li>Schane, Tristan. Myrmidons. N.d. Tristan Schane. Web.&lt;https://ferrebeekeeper.files.wordpress.com /2013/08/myrmidons.jpg>.</li>
+                        </ul>
                     </div>
-				</div>
-			</section>
-        
-            <section id="four" class="main style1 special" style="padding-bottom: 1em">
-				<div class="container">
-				    <h2>Bibliography</h2>
-					<div class="row 150%">
-						<div class="4u 12u$(medium)">
-                            <ul style="list-style-type: none; font-size: 0.86em">
-                                <li>Hornblower, Simon, and Antony Spawforth. The Oxford Classical Dictionary. Oxford: Oxford UP, 2003. Print.</li>
-                                <br>
-                                <li>Schane, Tristan. Myrmidons. N.d. Tristan Schane. Web.&lt;https://ferrebeekeeper.files.wordpress.com /2013/08/myrmidons.jpg>.</li>
-                            </ul>
-                        </div>
-                        <div class="4u 12u$(medium)">
-                            <ul style="list-style-type: none; font-size: 0.86em">
-                                <li>Ovid, and Henry T. Riley. The Metamorphoses of Ovid, Books I-VII. New York: Translation Pub., 1925. Print.</li>
-                                <br>
-                                <li>Solis, Virgil. Myrmidons; People from Ants for King Aeacus. 1581. Web. &lt;http://www.latein-pagina.de/ovid_illustrationen/virgil_solis/ buch7/vs7_11.htm>. <em><strong>(Latin Text Picture)</strong></em></li>
-                                <br>
-                                <li>Zeus Turns Ants into Men to Help Aeacus. 17C AD. Aeacus. Web. &lt;http://www.maicar.com/GML/Aeacus.html>. <em><strong>(Rhetorical Analysis Picture)</strong></em></li>
-                            </ul>
-                        </div>
-                        <div class="4u 12u$(medium)">
-                            <ul style="list-style-type: none; font-size: 0.86em">
-                                <li>Ovid, and R. J. Tarrant. P. Ovidi Nasonis Metamorphoses. Oxford: Oxford UP, 2004. Print.</li>
-                                <br>
-                                <li>When Aegina Is Depopulated by a Plague King Aescus Asks Zeus to Turn the Ants into People. N.d. Web. &lt;http://ovidmeta.jp/dat/pic/1651ovid-p.196a.jpg>. <em><strong>(Context Essay Picture)</strong></em></li>
-                            </ul>
-                        </div>
+                    <div class="4u 12u$(medium)">
+                        <ul style="list-style-type: none; font-size: 0.86em">
+                            <li>Ovid, and Henry T. Riley. The Metamorphoses of Ovid, Books I-VII. New York: Translation Pub., 1925. Print.</li>
+                            <br>
+                            <li>Solis, Virgil. Myrmidons; People from Ants for King Aeacus. 1581. Web. &lt;http://www.latein-pagina.de/ovid_illustrationen/virgil_solis/ buch7/vs7_11.htm>. <em><strong>(Latin Text Picture)</strong></em></li>
+                            <br>
+                            <li>Zeus Turns Ants into Men to Help Aeacus. 17C AD. Aeacus. Web. &lt;http://www.maicar.com/GML/Aeacus.html>. <em><strong>(Rhetorical Analysis Picture)</strong></em></li>
+                        </ul>
                     </div>
-                    <header class="major"> </header>
-				</div>
-			</section>
-        
-            <section class="main style11" id="spacer" style="padding-bottom:0.5em; padding-top: 2em;">
-                <p style="position: relative; width: 50%; margin: 0 auto; top: 50%; text-align: center;">Thoughtfully built and coded by Matthew Stallone. All code can be found at: <a href="http://www.github.com/mstallone/Ovid-Project">github.com/mstallone/Ovid-Project</a></p>
-                
-			</section>
-        
-            <section class="main style11" id="spacer" style="padding-top: 0.5em; padding-bottom: 2em">
-                <p style="position: relative; width: 50%; margin: 0 auto; top: 50%; text-align: center;"><a href="mailto:mstallone@headroyce.org">Email me</a> &nbsp;&bull;&nbsp; Last updated: 4/3/15</p>
-			</section>
-        </body>
-    
-        <script>
-            $("#latintext").hide();
-            $("#rhetoricalanalysis").hide();
-            $("#artisticanalysis").hide();
-            $("#quiz").hide();
-            
-            var l = true, r = true, a = true;
-            var resetQuiz = function(){
-                $("li").each(function(index) {
-                    $(this).removeClass("quizCorrect");
-                    $(this).removeClass("quizIncorrect");
+                    <div class="4u 12u$(medium)">
+                        <ul style="list-style-type: none; font-size: 0.86em">
+                            <li>Ovid, and R. J. Tarrant. P. Ovidi Nasonis Metamorphoses. Oxford: Oxford UP, 2004. Print.</li>
+                            <br>
+                            <li>When Aegina Is Depopulated by a Plague King Aescus Asks Zeus to Turn the Ants into People. N.d. Web. &lt;http://ovidmeta.jp/dat/pic/1651ovid-p.196a.jpg>. <em><strong>(Context Essay Picture)</strong></em></li>
+                        </ul>
+                    </div>
+                </div>
+                <header class="major"> </header>
+            </div>
+        </section>
+
+        <section class="main style11" id="spacer" style="padding-bottom:0.5em; padding-top: 2em;">
+            <p style="position: relative; width: 50%; margin: 0 auto; top: 50%; text-align: center;">Thoughtfully built and coded by Matthew Stallone. All code can be found at: <a href="http://www.github.com/mstallone/Ovid-Project">github.com/mstallone/Ovid-Project</a></p>
+        </section>
+
+        <section class="main style11" id="spacer" style="padding-top: 0.5em; padding-bottom: 2em">
+            <p style="position: relative; width: 50%; margin: 0 auto; top: 50%; text-align: center;"><a href="mailto:mstallone@headroyce.org">Email me</a> &nbsp;&bull;&nbsp; Last updated: 4/3/15</p>
+        </section>
+    </body>
+    <script>
+        $("#latintext").hide();
+        $("#rhetoricalanalysis").hide();
+        $("#artisticanalysis").hide();
+        $("#quiz").hide();
+
+        var l = true, r = true, a = true;
+        var resetQuiz = function(){
+            $("li").each(function(index) {
+                $(this).removeClass("quizCorrect");
+                $(this).removeClass("quizIncorrect");
+            });
+        }
+
+        $(".quizOption").click(function() {
+            if($(this).hasClass("correct")) {
+                $(this).removeClass("quizOption");
+                $(this).addClass("quizCorrect");
+            }
+            else {
+                $(this).removeClass("quizOption");
+                $(this).addClass("quizIncorrect");
+            }
+        });
+        $("#quizButton").click(function() {
+            if($("#quiz").css('display') == 'none') $("#quiz").slideDown();
+            else $("#quiz").slideUp();
+            resetQuiz();
+        });
+        $("#quizClose").click(function() {
+            $("#quiz").slideUp();
+
+            $('html, body').animate({
+                scrollTop: $("#quizStarterQuestion").offset().top
+            }, 1000);
+
+            resetQuiz();
+        });
+
+        $("#latintextButton").click(function() {
+            if($("#latintext").css('display') == 'none') {
+                l = false;
+                $("#latintextButton").addClass("special");
+                $("#latintext").slideDown();
+                $("#latintextButton").removeClass("scrolly");
+            }
+            else {
+                l = true;
+                $("#latintextButton").removeClass("special");
+                $("#latintext").slideUp(function() {
+                    $("#latintextButton").addClass("scrolly");
                 });
             }
-            
-            $(".quizOption").click(function() {
-                if($(this).hasClass("correct")) {
-                    $(this).removeClass("quizOption");
-                    $(this).addClass("quizCorrect");
-                }
-                else {
-                    $(this).removeClass("quizOption");
-                    $(this).addClass("quizIncorrect");
-                }
-            });
-            $("#quizButton").click(function() {
-                if($("#quiz").css('display') == 'none') $("#quiz").slideDown();
-                else $("#quiz").slideUp();
-                resetQuiz();
-            });
-            $("#quizClose").click(function() {
-                $("#quiz").slideUp();
-                
-                $('html, body').animate({
-                    scrollTop: $("#quizStarterQuestion").offset().top
-                }, 1000);
-                
-                resetQuiz();
-            });
-            
-            $("#latintextButton").click(function() {
-                if($("#latintext").css('display') == 'none') {
-                    l = false;
-                    $("#latintextButton").addClass("special");
-                    $("#latintext").slideDown();
-                    $("#latintextButton").removeClass("scrolly");
-                }
-                else {
-                    l = true;
-                    $("#latintextButton").removeClass("special");
-                    $("#latintext").slideUp(function() {
-                        $("#latintextButton").addClass("scrolly");
-                    });
-                }
-                
-            });
-            $("#artisticanalysisButton").click(function() {
-                if($("#artisticanalysis").css('display') == 'none') {
-                    a = false;
-                    $("#artisticanalysis").slideDown();
-                    $("#artisticanalysisButton").addClass("special");
-                    $("#artisticanalysisButton").removeClass("scrolly");
-                }
-                else {
-                    a = true;
-                    $("#artisticanalysis").slideUp(function() {
-                        $("#artisticanalysisButton").addClass("scrolly");
-                    });
-                    $("#artisticanalysisButton").removeClass("special");   
-                }
-                
-            });
-            $("#rhetoricalanalysisButton").click(function() {
-                if($("#rhetoricalanalysis").css('display') == 'none') {
-                    r = false;
-                    $("#rhetoricalanalysis").slideDown();
-                    $("#rhetoricalanalysisButton").addClass("special");
-                    $("#rhetoricalanalysisButton").removeClass("scrolly");
-                }
-                else {
-                    r = true;
-                    $("#rhetoricalanalysis").slideUp(function() {
-                        $("#rhetoricalanalysisButton").addClass("scrolly");
-                    });
-                    $("#rhetoricalanalysisButton").removeClass("special");
-                }
-            });
-            
-            $("#latintextClose").click(function() {
-                l = true;
-                $("#latintext").slideUp();
-                $("#latintextButton").removeClass("special");
-                $("#latintextButton").addClass("scrolly");
-                
-                $('html, body').animate({
-                    scrollTop: $("#three").offset().top
-                }, 1500);
-                
-            });
-            $("#artisticanalysisClose").click(function() {
+
+        });
+        $("#artisticanalysisButton").click(function() {
+            if($("#artisticanalysis").css('display') == 'none') {
+                a = false;
+                $("#artisticanalysis").slideDown();
+                $("#artisticanalysisButton").addClass("special");
+                $("#artisticanalysisButton").removeClass("scrolly");
+            }
+            else {
                 a = true;
-                $("#artisticanalysis").slideUp();
-                $("#artisticanalysisButton").removeClass("special");
-                $("#artisticanalysisButton").addClass("scrolly");
-                
-                $('html, body').animate({
-                    scrollTop: $("#three").offset().top
-                }, 1500);
-                
-            });
-            $("#rhetoricalanalysisClose").click(function() {
+                $("#artisticanalysis").slideUp(function() {
+                    $("#artisticanalysisButton").addClass("scrolly");
+                });
+                $("#artisticanalysisButton").removeClass("special");   
+            }
+
+        });
+        $("#rhetoricalanalysisButton").click(function() {
+            if($("#rhetoricalanalysis").css('display') == 'none') {
+                r = false;
+                $("#rhetoricalanalysis").slideDown();
+                $("#rhetoricalanalysisButton").addClass("special");
+                $("#rhetoricalanalysisButton").removeClass("scrolly");
+            }
+            else {
                 r = true;
-                $("#rhetoricalanalysis").slideUp();
+                $("#rhetoricalanalysis").slideUp(function() {
+                    $("#rhetoricalanalysisButton").addClass("scrolly");
+                });
                 $("#rhetoricalanalysisButton").removeClass("special");
-                $("#rhetoricalanalysisButton").addClass("scrolly");
-                
-                $('html, body').animate({
-                    scrollTop: $("#three").offset().top
-                }, 1500);
-                
-            });
-            
-            $("#b1").click(function() {
-                $("#b1").addClass("special");
-                $("#b2").removeClass("special");
-                $("#b3").removeClass("special");
-                
-                $("#b1d").show();
-                $("#b2d").hide();
-                $("#b3d").hide();
-            });
-            $("#b2").click(function() {
-                $("#b2").addClass("special");
-                $("#b1").removeClass("special");
-                $("#b3").removeClass("special");
-                
-                $("#b2d").show();
-                $("#b1d").hide();
-                $("#b3d").hide();
-            });
-            $("#b3").click(function() {
-                $("#b3").addClass("special");
-                $("#b2").removeClass("special");
-                $("#b1").removeClass("special");
-                
-                $("#b3d").show();
-                $("#b2d").hide();
-                $("#b1d").hide();
-            });
-            
-        </script>
-		<!-- Five -->
-		<!--<section id="five" class="main style1">
-				<div class="container">
-					<header class="major special">
-						<h2>Elements</h2>
-					</header>
+            }
+        });
 
-					<section>
-						<h4>Text</h4>
-						<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-						This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-						This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-						<hr />
-						<header>
-							<h4>Heading with a Subtitle</h4>
-							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						<header>
-							<h5>Heading with a Subtitle</h5>
-							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						<hr />
-						<h2>Heading Level 2</h2>
-						<h3>Heading Level 3</h3>
-						<h4>Heading Level 4</h4>
-						<h5>Heading Level 5</h5>
-						<h6>Heading Level 6</h6>
-						<hr />
-						<h5>Blockquote</h5>
-						<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-						<h5>Preformatted</h5>
-						<pre><code>i = 0;
+        $("#latintextClose").click(function() {
+            l = true;
+            $("#latintext").slideUp();
+            $("#latintextButton").removeClass("special");
+            $("#latintextButton").addClass("scrolly");
 
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
+            $('html, body').animate({
+                scrollTop: $("#three").offset().top
+            }, 1500);
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-					</section>
+        });
+        $("#artisticanalysisClose").click(function() {
+            a = true;
+            $("#artisticanalysis").slideUp();
+            $("#artisticanalysisButton").removeClass("special");
+            $("#artisticanalysisButton").addClass("scrolly");
 
-					<section>
-						<h4>Lists</h4>
-						<div class="row">
-							<div class="6u 12u$(medium)">
-								<h5>Unordered</h5>
-								<ul>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Sagittis adipiscing.</li>
-									<li>Felis enim feugiat.</li>
-								</ul>
-								<h5>Alternate</h5>
-								<ul class="alt">
-									<li>Dolor pulvinar etiam.</li>
-									<li>Sagittis adipiscing.</li>
-									<li>Felis enim feugiat.</li>
-								</ul>
-							</div>
-							<div class="6u$ 12u$(medium)">
-								<h5>Ordered</h5>
-								<ol>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Etiam vel felis viverra.</li>
-									<li>Felis enim feugiat.</li>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Etiam vel felis lorem.</li>
-									<li>Felis enim et feugiat.</li>
-								</ol>
-								<h5>Icons</h5>
-								<ul class="icons">
-									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-								</ul>
-							</div>
-						</div>
-						<h5>Actions</h5>
-						<div class="row">
-							<div class="6u 12u$(medium)">
-								<ul class="actions">
-									<li><a href="#" class="button special">Default</a></li>
-									<li><a href="#" class="button">Default</a></li>
-								</ul>
-								<ul class="actions small">
-									<li><a href="#" class="button special small">Small</a></li>
-									<li><a href="#" class="button small">Small</a></li>
-								</ul>
-								<ul class="actions vertical">
-									<li><a href="#" class="button special">Default</a></li>
-									<li><a href="#" class="button">Default</a></li>
-								</ul>
-								<ul class="actions vertical small">
-									<li><a href="#" class="button special small">Small</a></li>
-									<li><a href="#" class="button small">Small</a></li>
-								</ul>
-							</div>
-							<div class="6u 12u$(medium)">
-								<ul class="actions vertical">
-									<li><a href="#" class="button special fit">Default</a></li>
-									<li><a href="#" class="button fit">Default</a></li>
-								</ul>
-								<ul class="actions vertical small">
-									<li><a href="#" class="button special small fit">Small</a></li>
-									<li><a href="#" class="button small fit">Small</a></li>
-								</ul>
-							</div>
-						</div>
-					</section>
+            $('html, body').animate({
+                scrollTop: $("#three").offset().top
+            }, 1500);
 
-					<section>
-						<h4>Table</h4>
-						<h5>Default</h5>
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Item One</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Two</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Three</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Four</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Five</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
+        });
+        $("#rhetoricalanalysisClose").click(function() {
+            r = true;
+            $("#rhetoricalanalysis").slideUp();
+            $("#rhetoricalanalysisButton").removeClass("special");
+            $("#rhetoricalanalysisButton").addClass("scrolly");
 
-						<h5>Alternate</h5>
-						<div class="table-wrapper">
-							<table class="alt">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Item One</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Two</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Three</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Four</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Five</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</section>
+            $('html, body').animate({
+                scrollTop: $("#three").offset().top
+            }, 1500);
 
-					<section>
-						<h4>Buttons</h4>
-						<ul class="actions">
-							<li><a href="#" class="button special">Special</a></li>
-							<li><a href="#" class="button">Default</a></li>
-						</ul>
-						<ul class="actions">
-							<li><a href="#" class="button big">Big</a></li>
-							<li><a href="#" class="button">Default</a></li>
-							<li><a href="#" class="button small">Small</a></li>
-						</ul>
-						<ul class="actions fit">
-							<li><a href="#" class="button fit">Fit</a></li>
-							<li><a href="#" class="button special fit">Fit</a></li>
-							<li><a href="#" class="button fit">Fit</a></li>
-						</ul>
-						<ul class="actions fit small">
-							<li><a href="#" class="button special fit small">Fit + Small</a></li>
-							<li><a href="#" class="button fit small">Fit + Small</a></li>
-							<li><a href="#" class="button special fit small">Fit + Small</a></li>
-						</ul>
-						<ul class="actions">
-							<li><a href="#" class="button special icon fa-download">Icon</a></li>
-							<li><a href="#" class="button icon fa-download">Icon</a></li>
-						</ul>
-						<ul class="actions">
-							<li><span class="button special disabled">Disabled</span></li>
-							<li><span class="button disabled">Disabled</span></li>
-						</ul>
-					</section>
+        });
 
-					<section>
-						<h4>Form</h4>
-						<form method="post" action="#">
-							<div class="row uniform 50%">
-								<div class="6u 12u$(xsmall)">
-									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-								</div>
-								<div class="6u$ 12u$(xsmall)">
-									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-								</div>
-								<div class="12u$">
-									<div class="select-wrapper">
-										<select name="demo-category" id="demo-category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
-									</div>
-								</div>
-								<div class="4u 12u$(small)">
-									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-									<label for="demo-priority-low">Low</label>
-								</div>
-								<div class="4u 12u$(small)">
-									<input type="radio" id="demo-priority-normal" name="demo-priority">
-									<label for="demo-priority-normal">Normal</label>
-								</div>
-								<div class="4u$ 12u$(small)">
-									<input type="radio" id="demo-priority-high" name="demo-priority">
-									<label for="demo-priority-high">High</label>
-								</div>
-								<div class="6u 12u$(small)">
-									<input type="checkbox" id="demo-copy" name="demo-copy">
-									<label for="demo-copy">Email me a copy</label>
-								</div>
-								<div class="6u$ 12u$(small)">
-									<input type="checkbox" id="demo-human" name="demo-human" checked>
-									<label for="demo-human">Not a robot</label>
-								</div>
-								<div class="12u$">
-									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-								</div>
-								<div class="12u$">
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="special" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</section>
+        $("#b1").click(function() {
+            $("#b1").addClass("special");
+            $("#b2").removeClass("special");
+            $("#b3").removeClass("special");
 
-					<section>
-						<h4>Image</h4>
-						<h5>Fit</h5>
-						<div class="box alt">
-							<div class="row uniform 50%">
-								<div class="12u"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-							</div>
-						</div>
-						<h5>Left &amp; Right</h5>
-						<p><span class="image left"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						<p><span class="image right"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-					</section>
+            $("#b1d").show();
+            $("#b2d").hide();
+            $("#b3d").hide();
+        });
+        $("#b2").click(function() {
+            $("#b2").addClass("special");
+            $("#b1").removeClass("special");
+            $("#b3").removeClass("special");
 
-				</div>
-			</section>
-		-->
+            $("#b2d").show();
+            $("#b1d").hide();
+            $("#b3d").hide();
+        });
+        $("#b3").click(function() {
+            $("#b3").addClass("special");
+            $("#b2").removeClass("special");
+            $("#b1").removeClass("special");
 
-		<!-- Footer 
-			<section id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-				</ul>
-			</section>-->
+            $("#b3d").show();
+            $("#b2d").hide();
+            $("#b1d").hide();
+        });
+    </script>
 </html>
