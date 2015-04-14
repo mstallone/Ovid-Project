@@ -30,9 +30,11 @@
             })(jQuery);
         </script>
         <style>
-            .quizOption:hover{ background-color: azure; }
+            .quizOption:hover { background-color: azure; }
             .quizCorrect { background-color: rgba(0,255,0,0.25); }
             .quizIncorrect { background-color: rgba(255,0,0,0.25); }
+            
+            .navBaritem:hover { background-color: cornsilk; }
         </style>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -43,6 +45,16 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
+        <div style="position:fixed; z-index: 9999; background: #ffffff; height: 30px; width: 100%; margin-right: 0px; margin-left: 0px; left: 0px; right: 0px; opacity:0.75">
+            <ul style="list-style-type: none; display: inline; marign: 0em 0em 0em 0em; padding: 0em 0em 0em 0em;" >
+                <li style="display: inline; padding-right: 0.6em"><a href="#one" class="scrolly">Context</a></li>
+                <li style="display: inline; padding-right: 0.6em"><a href="#latintext" id="latintextButtonNB" class="scrolly">Latin Text</a></li>
+                <li style="display: inline; padding-right: 0.6em"><a href="#rhetoricalanalysis" id="rhetoricalanalysisButtonNB" class="scrolly">Rhetorical Analysis</a></li>
+                <li style="display: inline; padding-right: 0.6em"><a href="#quiz" class="scrolly" id="quizButtonNB">Quiz</a></li>
+                <li style="display: inline; padding-right: 0.6em"><a href="#bibliography" class="scrolly">Bibliography</a></li>
+                <li style="display: inline; padding-right: 0.6em"><a href="#spacer" class="scrolly">Info</a></li>
+            </ul>
+        </div>
 		<!-- Header -->
         <section id="header">
             <div class="inner">
@@ -377,7 +389,7 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
             </div>
         </section>
 
-        <section id="four" class="main style1 special" style="padding-bottom: 1em">
+        <section id="bibliography" class="main style1 special" style="padding-bottom: 1em">
             <div class="container">
                 <h2>Bibliography</h2>
                 <div class="row 150%">
@@ -446,6 +458,9 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
             else $("#quiz").slideUp();
             resetQuiz();
         });
+        $("#quizButtonNB").click(function() {
+            $("#quiz").slideDown();
+        });
         $("#quizClose").click(function() {
             $("#quiz").slideUp();
 
@@ -471,6 +486,12 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
                 });
             }
 
+        });
+        $("#latintextButtonNB").click(function() {
+            l = false;
+            $("#latintextButton").addClass("special");
+            $("#latintext").slideDown();
+            $("#latintextButton").removeClass("scrolly");
         });
         $("#artisticanalysisButton").click(function() {
             if($("#artisticanalysis").css('display') == 'none') {
@@ -503,7 +524,12 @@ Aeacus’s lack of respect can specifically be seen when he is demanding his sai
                 $("#rhetoricalanalysisButton").removeClass("special");
             }
         });
-
+        $("#rhetoricalanalysisButtonNB").click(function() {
+            r = false;
+            $("#rhetoricalanalysis").slideDown();
+            $("#rhetoricalanalysisButton").addClass("special");
+            $("#rhetoricalanalysisButton").removeClass("scrolly");
+        });
         $("#latintextClose").click(function() {
             l = true;
             $("#latintext").slideUp();
