@@ -1,76 +1,72 @@
-/* Basic */
+body,input,select,textarea
+{
+	font-size:12pt
+}
 
-	body, input, select, textarea {
-		font-size: 12pt;
-	}
+h1
+{
+	font-size:1.75em
+}
 
-	h1 {
-		font-size: 1.75em;
-	}
+h2
+{
+	font-size:1.5em
+}
 
-	h2 {
-		font-size: 1.5em;
-	}
+h3
+{
+	font-size:1.1em
+}
 
-	h3 {
-		font-size: 1.1em;
-	}
+h4
+{
+	font-size:1em
+}
 
-	h4 {
-		font-size: 1em;
-	}
+ul.major-icons li
+{
+	padding:1.5em
+}
 
-/* List */
+ul.major-icons li .icon
+{
+	height:5em;
+	line-height:5em;
+	width:5em
+}
 
-	ul.major-icons li {
-		padding: 1.5em;
-	}
+ul.major-icons li .icon:before
+{
+	font-size:42px
+}
 
-		ul.major-icons li .icon {
-			height: 5em;
-			line-height: 5em;
-			width: 5em;
-		}
+.icon.major
+{
+	margin:0 0 1em
+}
 
-			ul.major-icons li .icon:before {
-				font-size: 42px;
-			}
+input[type="submit"],input[type="reset"],input[type="button"],button,.button
+{
+	height:3em;
+	line-height:3em
+}
 
-/* Icon */
+.main
+{
+	padding:3em 1.5em 1em
+}
 
-	.icon.major {
-		margin: 0 0 1em 0;
-	}
+#header
+{
+	padding:4em 3em
+}
 
-/* Button */
+#header .actions
+{
+	margin:2em 0 0
+}
 
-	input[type="submit"],
-	input[type="reset"],
-	input[type="button"],
-	button,
-	.button {
-		height: 3em;
-		line-height: 3em;
-	}
-
-/* Main */
-
-	.main {
-		padding: 3em 1.5em 1em 1.5em;
-	}
-
-/* Header */
-
-	#header {
-		padding: 4em 3em 4em 3em;
-	}
-
-		#header .actions {
-			margin: 2em 0 0 0;
-		}
-
-/* Footer */
-
-	#footer {
-		padding: 3em 1.5em 3em 1.5em;
-	}
+#footer
+{
+	padding:3em 1.5em
+}

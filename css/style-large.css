@@ -1,49 +1,48 @@
-/* Basic */
+body,input,select,textarea
+{
+	font-size:13pt
+}
 
-	body, input, select, textarea {
-		font-size: 13pt;
-	}
+h1 br,h2 br,h3 br,h4 br,h5 br,h6 br
+{
+	display:none
+}
 
-	h1 br, h2 br, h3 br, h4 br, h5 br, h6 br {
-		display: none;
-	}
+ul.major-icons li
+{
+	padding:2em
+}
 
-/* List */
+ul.major-icons li .icon
+{
+	height:8em;
+	line-height:8em;
+	width:8em
+}
 
-	ul.major-icons li {
-		padding: 2em;
-	}
+.main
+{
+	padding:4em 0 2em
+}
 
-		ul.major-icons li .icon {
-			height: 8em;
-			line-height: 8em;
-			width: 8em;
-		}
+.main.style2
+{
+	background-attachment:scroll
+}
 
-/* Main */
+#header
+{
+	padding:5em 0;
+	background-attachment:scroll
+}
 
-	.main {
-		padding: 4em 0 2em 0;
-	}
+#header br
+{
+	display:inline
+}
 
-		.main.style2 {
-			background-attachment: scroll;
-		}
-
-/* Header */
-
-	#header {
-		padding: 5em 0 5em 0;
-		background-attachment: scroll;
-	}
-
-		#header br {
-			display: inline;
-		}
-
-/* Footer */
-
-	#footer {
-		padding: 4em 0 4em 0;
-		background-attachment: scroll;
-	}
+#footer
+{
+	padding:4em 0;
+	background-attachment:scroll
+}
